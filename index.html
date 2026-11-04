@@ -5,103 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <style>
-        /* Базовые стили для страницы */
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f4f2; /* Легкий зеленовато-серый оттенок фона */
-            color: #2c3e50;
-        }
-
-        header {
-            background-color: #2e7d32; /* Насыщенный зеленый цвет природы */
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        header p {
-            margin: 10px 0 0 0;
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        /* Контейнер для нашей галереи (Сетка CSS Grid) */
-        .gallery-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            /* Автоматически распределяем картинки по колонкам (минимум 300px каждая) */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; /* Отступы между карточками */
-        }
-
-        /* Карточка фотографии */
-        .photo-card {
-            background: white;
-            border-radius: 8px; /* Ваше любимое скругление углов */
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        /* Эффект увеличения карточки при наведении мышки */
-        .photo-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Стили для самого изображения */
-        .photo-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Чтобы картинки не сжимались, а красиво подрезались под размер */
-            display: block;
-        }
-
-        /* Блок с кнопкой под картинкой */
-        .photo-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .photo-info h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.2em;
-        }
-
-        /* Красивая кнопка СКАЧАТЬ */
-        .download-btn {
-            display: inline-block;
-            background-color: #2e7d32;
-            color: white;
-            text-align: center;
-            padding: 12px 24px;
-            font-size: 1em;
-            font-weight: bold;
-            text-decoration: none; /* Убираем подчеркивание ссылки */
-            border-radius: 4px; /* Аккуратное скругление углов */
-            transition: background-color 0.2s;
-        }
-
-        .download-btn:hover {
-            background-color: #1b5e20; /* Темнеет при наведении */
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 60px;
-        }
+        body { font-family: 'Verdana', sans-serif; margin: 0; padding: 0; background-color: #f0f4f2; color: #2c3e50; }
+        header { background-color: #2e7d32; color: white; text-align: center; padding: 40px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 2.5em; }
+        header p { margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9; }
+        .gallery-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .photo-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+        .photo-card:hover { transform: translateY(-5px); }
+        .photo-card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .photo-info { padding: 20px; text-align: center; }
+        .photo-info h3 { margin: 0 0 15px 0; font-size: 1.2em; }
+        .download-btn { display: inline-block; background-color: #2e7d32; color: white; text-align: center; padding: 12px 24px; font-size: 1em; font-weight: bold; text-decoration: none; border-radius: 4px; transition: background-color 0.2s; }
+        .download-btn:hover { background-color: #1b5e20; }
+        footer { text-align: center; padding: 30px; background-color: #2c3e50; color: white; margin-top: 60px; }
     </style>
 </head>
 <body>
@@ -111,34 +27,34 @@
         <p>Красивые пейзажи в высоком качестве. Скачивайте совершенно бесплатно!</p>
     </header>
 
-    <!-- Сетка с карточками фотографий -->
     <main class="gallery-container">
 
         <!-- Карточка 1: Лес -->
         <div class="photo-card">
-            <img src="https://unsplash.com" alt="Магический лес">
+            <!-- Указываем файл, который лежит прямо на сервере -->
+            <img src="forest.jpg" alt="Зеленый лес">
             <div class="photo-info">
                 <h3>Солнечный лес</h3>
-                <!-- Атрибут download заставляет браузер скачивать файл, а target="_blank" откроет в новой вкладке если скачивание заблокировано -->
-                <a href="https://unsplash.com" target="_blank" download="forest.jpg" class="download-btn">Скачать фото</a>
+                <!-- Теперь скачивание сработает автоматически! -->
+                <a href="forest.jpg" download="forest.jpg" class="download-btn">Скачать фото</a>
             </div>
         </div>
 
         <!-- Карточка 2: Горы -->
         <div class="photo-card">
-            <img src="https://unsplash.com" alt="Величественные горы">
+            <img src="mountains.jpg" alt="Снежные горы">
             <div class="photo-info">
                 <h3>Горные вершины</h3>
-                <a href="https://unsplash.com" target="_blank" download="mountains.jpg" class="download-btn">Скачать фото</a>
+                <a href="mountains.jpg" download="mountains.jpg" class="download-btn">Скачать фото</a>
             </div>
         </div>
 
-        <!-- Карточка 3: Океан / Море -->
+        <!-- Карточка 3: Море -->
         <div class="photo-card">
-            <img src="https://unsplash.com" alt="Тропический пляж">
+            <img src="ocean.jpg" alt="Морской пляж">
             <div class="photo-info">
                 <h3>Лазурный берег</h3>
-                <a href="https://unsplash.com" target="_blank" download="ocean.jpg" class="download-btn">Скачать фото</a>
+                <a href="ocean.jpg" download="ocean.jpg" class="download-btn">Скачать фото</a>
             </div>
         </div>
 
