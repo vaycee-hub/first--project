@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Интерактивное приложение</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <style>
+        /* Базовые стили для страницы */
+        body {
+            font-family: Verdana, sans-serif;
+            font-size: 1em;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        article {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Исходные стили кнопки (CSS) */
+        #myButton {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Плавный переход для анимации */
+            
+            /* Ваше свойство: аккуратное скругление углов по умолчанию */
+            border-radius: 4px; 
+        }
+
+        #myButton:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Моя JS-Лаборатория</h1>
+    </header>
+    
+    <nav></nav>
+    
+    <section>
+        <article>
+            <p>Нажмите на кнопку, чтобы JavaScript изменил её CSS-свойства на лету:</p>
+            <!-- Наша кнопка -->
+            <button id="myButton">Скругление: 4px (Синяя)</button>
+        </article>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Начало пути в IT</p>
+    </footer>
+
+    <!-- Логика JavaScript -->
+    <script>
+        // 1. Находим кнопку в документе по её ID
+        const button = document.getElementById('myButton');
+
+        // 2. Создаем переменную состояния (переключатель)
+        let isChanged = false;
+
+        // 3. Добавляем событие клика
+        button.addEventListener('click', () => {
+            if (!isChanged) {
+                // Изменяем CSS-стили через JavaScript
+                button.style.borderRadius = '25px';          // Делаем углы круглыми
+                button.style.backgroundColor = '#28a745';    // Меняем цвет на зеленый
+                button.innerText = 'Скругление: 25px (Зеленая)';
+                isChanged = true;
+            } else {
+                // Возвращаем исходные стили (включая ваши 4px)
+                button.style.borderRadius = '4px';           // Возвращаем аккуратные углы
+                button.style.backgroundColor = '#007bff';    // Возвращаем синий цвет
+                button.innerText = 'Скругление: 4px (Синяя)';
+                isChanged = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
