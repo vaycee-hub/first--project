@@ -1,110 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Интерактивное приложение</title>
+    <title>Галерея природы</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#ffffff" />
-    
     <style>
         /* Базовые стили для страницы */
         body {
-            font-family: Verdana, sans-serif;
-            font-size: 1em;
+            font-family: 'Verdana', sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f7f6;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            padding: 0;
+            background-color: #f0f4f2; /* Легкий зеленовато-серый оттенок фона */
+            color: #2c3e50;
         }
 
-        header, footer {
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        section {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        article {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Исходные стили кнопки (CSS) */
-        #myButton {
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            background-color: #007bff;
+        header {
+            background-color: #2e7d32; /* Насыщенный зеленый цвет природы */
             color: white;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease; /* Плавный переход для анимации */
-            
-            /* Ваше свойство: аккуратное скругление углов по умолчанию */
-            border-radius: 4px; 
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        #myButton:hover {
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
             opacity: 0.9;
+        }
+
+        /* Контейнер для нашей галереи (Сетка CSS Grid) */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            /* Автоматически распределяем картинки по колонкам (минимум 300px каждая) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Отступы между карточками */
+        }
+
+        /* Карточка фотографии */
+        .photo-card {
+            background: white;
+            border-radius: 8px; /* Ваше любимое скругление углов */
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        /* Эффект увеличения карточки при наведении мышки */
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Стили для самого изображения */
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover; /* Чтобы картинки не сжимались, а красиво подрезались под размер */
+            display: block;
+        }
+
+        /* Блок с кнопкой под картинкой */
+        .photo-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-info h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.2em;
+        }
+
+        /* Красивая кнопка СКАЧАТЬ */
+        .download-btn {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 12px 24px;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none; /* Убираем подчеркивание ссылки */
+            border-radius: 4px; /* Аккуратное скругление углов */
+            transition: background-color 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: #1b5e20; /* Темнеет при наведении */
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Моя JS-Лаборатория</h1>
+        <h1>Вдохновение Природой</h1>
+        <p>Красивые пейзажи в высоком качестве. Скачивайте совершенно бесплатно!</p>
     </header>
-    
-    <nav></nav>
-    
-    <section>
-        <article>
-            <p>Нажмите на кнопку, чтобы JavaScript изменил её CSS-свойства на лету:</p>
-            <!-- Наша кнопка -->
-            <button id="myButton">Скругление: 4px (Синяя)</button>
-        </article>
-    </section>
+
+    <!-- Сетка с карточками фотографий -->
+    <main class="gallery-container">
+
+        <!-- Карточка 1: Лес -->
+        <div class="photo-card">
+            <img src="https://unsplash.com" alt="Магический лес">
+            <div class="photo-info">
+                <h3>Солнечный лес</h3>
+                <!-- Атрибут download заставляет браузер скачивать файл, а target="_blank" откроет в новой вкладке если скачивание заблокировано -->
+                <a href="https://unsplash.com" target="_blank" download="forest.jpg" class="download-btn">Скачать фото</a>
+            </div>
+        </div>
+
+        <!-- Карточка 2: Горы -->
+        <div class="photo-card">
+            <img src="https://unsplash.com" alt="Величественные горы">
+            <div class="photo-info">
+                <h3>Горные вершины</h3>
+                <a href="https://unsplash.com" target="_blank" download="mountains.jpg" class="download-btn">Скачать фото</a>
+            </div>
+        </div>
+
+        <!-- Карточка 3: Океан / Море -->
+        <div class="photo-card">
+            <img src="https://unsplash.com" alt="Тропический пляж">
+            <div class="photo-info">
+                <h3>Лазурный берег</h3>
+                <a href="https://unsplash.com" target="_blank" download="ocean.jpg" class="download-btn">Скачать фото</a>
+            </div>
+        </div>
+
+    </main>
 
     <footer>
-        <p>&copy; 2026 Начало пути в IT</p>
+        <p>&copy; 2026 Моя Первая Онлайн Галерея Природы</p>
     </footer>
-
-    <!-- Логика JavaScript -->
-    <script>
-        // 1. Находим кнопку в документе по её ID
-        const button = document.getElementById('myButton');
-
-        // 2. Создаем переменную состояния (переключатель)
-        let isChanged = false;
-
-        // 3. Добавляем событие клика
-        button.addEventListener('click', () => {
-            if (!isChanged) {
-                // Изменяем CSS-стили через JavaScript
-                button.style.borderRadius = '25px';          // Делаем углы круглыми
-                button.style.backgroundColor = '#28a745';    // Меняем цвет на зеленый
-                button.innerText = 'Скругление: 25px (Зеленая)';
-                isChanged = true;
-            } else {
-                // Возвращаем исходные стили (включая ваши 4px)
-                button.style.borderRadius = '4px';           // Возвращаем аккуратные углы
-                button.style.backgroundColor = '#007bff';    // Возвращаем синий цвет
-                button.innerText = 'Скругление: 4px (Синяя)';
-                isChanged = false;
-            }
-        });
-    </script>
 
 </body>
 </html>
